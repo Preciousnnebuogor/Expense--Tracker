@@ -14,9 +14,20 @@ export default function Home() {
     console.log(handleTransaction);
   };
 
-  transaction.map((data) => {
-    <div>{}</div>;
-  });
+  const income = transaction
+    .filter((item) => parseFloat(item.amount) > 0)
+    .reduce((acc, items) => acc + parseFloat(items.amount), 0);
+
+  const expenses = transaction
+    .filter((item) => parseFloat(item.amount) < 0)
+    .reduce((acc, items) => acc + parseFloat(items.amount), 0);
+
+     function deleteButton(indexToDelete) {
+       setTransaction((prev) =>
+         prev.filter((_, index) => index !== indexToDelete)
+       );
+     }
+
 
   return (
     <div className="container">
@@ -24,47 +35,45 @@ export default function Home() {
         <h1 className="param1">Expense Tracker</h1>
         <div className="section1">
           <p className="param2">Your balance</p>
-          <h2 className="param3">$ 0,000,000</h2>
+          <h2 className="param3">₦ 0,000,000</h2>
           <div className="displayIncome">
             <div className="income">
               <p>Income</p>
-              <h3>$ 0,000</h3>
+              <h3>₦{income.toFixed(2)}</h3>
             </div>
             <div className="expenses">
               <p>Expenses</p>
-              <h3>$ 0,000</h3>
+              <h3>₦{Math.abs(expenses).toFixed(2)}</h3>
             </div>
           </div>
         </div>
         <div className="section2">
           <div className="transaction">
             <p className="transact-p"> Transactions </p>
-            <div className="transact-border">
-              <p>food</p>
-              <p>200</p>
-            </div>
 
             <div className="transaction-list">
               {transaction.map((data, index) => {
                 return (
                   <div className="transaction-item">
                     <p>{data.description}</p>
-                    <p
-                      style={{
-                        color: parseFloat(data.amount) < 0 ? "red" : "green",
-                      }}
-                    >
-                      {data.amount}
-                    </p>
-                
+                    <div className="amount-delete">
+                      <p
+                        style={{
+                          color: parseFloat(data.amount) < 0 ? "red" : "green",
+                        }}
+                      >
+                        ₦{data.amount}
+                      </p>
+                      <button
+                        className="delete-btn"
+                        onClick={() => deleteButton(index)}
+                      >
+                        ❌
+                      </button>
+                    </div>
                   </div>
                 );
               })}
-
-              {/* <div className="transaction-item">
-                <p>Salary</p>
-                <p>+ $200</p>
-              </div> */}
             </div>
           </div>
 
@@ -107,8 +116,10 @@ export default function Home() {
               <p className="param4">Use negative (-) for expenses</p>
             </div>
 
-            <div className="button">
-              <button onClick={handleTransaction}>Add Transactions</button>
+            <div>
+              <button className="button" onClick={handleTransaction}>
+                Add Transactions
+              </button>
             </div>
           </div>
         </div>

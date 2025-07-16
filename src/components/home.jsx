@@ -1,23 +1,22 @@
 import { useState } from "react";
 
 export default function Home() {
-    const [transaction, setTransaction] = useState([])
+  const [transaction, setTransaction] = useState([]);
   const [currentInput, setCurrentInput] = useState({
     description: "",
     amount: "",
   });
 
   const handleTransaction = () => {
-   if(!currentInput.description || !currentInput.amount) return;
-   setTransaction((prev)=>[...prev, currentInput])
-   setCurrentInput({description:"", amount:""})
-  }
+    if (!currentInput.description || !currentInput.amount) return;
+    setTransaction((prev) => [...prev, currentInput]);
+    setCurrentInput({ description: "", amount: "" });
+    console.log(handleTransaction);
+  };
 
-  
-
-  function handleIncome(){
-    setAddIncome(addIncome)
-  }
+  transaction.map((data) => {
+    <div>{}</div>;
+  });
 
   return (
     <div className="container">
@@ -41,19 +40,31 @@ export default function Home() {
           <div className="transaction">
             <p className="transact-p"> Transactions </p>
             <div className="transact-border">
-              <p>Title</p>
-              <p>Amount</p>
+              <p>food</p>
+              <p>200</p>
             </div>
 
             <div className="transaction-list">
-              <div className="transaction-item">
-                <p>Groceries</p>
-                <p>- $50</p>
-              </div>
-              <div className="transaction-item">
+              {transaction.map((data, index) => {
+                return (
+                  <div className="transaction-item">
+                    <p>{data.description}</p>
+                    <p
+                      style={{
+                        color: parseFloat(data.amount) < 0 ? "red" : "green",
+                      }}
+                    >
+                      {data.amount}
+                    </p>
+                
+                  </div>
+                );
+              })}
+
+              {/* <div className="transaction-item">
                 <p>Salary</p>
                 <p>+ $200</p>
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -62,8 +73,8 @@ export default function Home() {
             <div className="descript">
               <p>Description</p>
               <input
-              type="text"
-              name="description"
+                type="text"
+                name="description"
                 required
                 onChange={(e) =>
                   setCurrentInput((prev) => ({
@@ -80,7 +91,7 @@ export default function Home() {
             <div className="amount">
               <p>Amount</p>
               <input
-              name="amount"
+                name="amount"
                 type="number"
                 className="input"
                 required

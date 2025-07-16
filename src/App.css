@@ -99,9 +99,19 @@ body{
   flex-direction: column;
 }
 
+.transact-border{
+  display: flex;
+  justify-content: space-between;
+  background-color: whitesmoke;
+  padding: 8px;
+  border-radius: 8px;
+  margin-top: 5px;
+
+}
 
 .transaction-list {
   margin-top: 10px;
+  max-height: 200px;
   overflow-y: auto;
   flex: 1; /* take remaining vertical space */
   padding-right: 5px;
@@ -109,8 +119,10 @@ body{
 .transaction-item {
   display: flex;
   justify-content: space-between;
+  background-color: white;
+  margin-top: 5px;
   padding: 8px;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   font-size: 14px;
 }
 .transaction-list {
@@ -134,15 +146,7 @@ body{
 .transact-p{
   font-weight: bold;
 }
-.transact-border{
-  display: flex;
-  justify-content: space-between;
-  background-color: whitesmoke;
-  padding: 8px;
-  border-radius: 8px;
-  margin-top: 5px;
 
-}
 
 .add-transaction{
   width: 45%;

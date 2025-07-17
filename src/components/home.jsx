@@ -28,6 +28,8 @@ export default function Home() {
        );
      }
 
+     const balance = income - expenses
+
 
   return (
     <div className="container">
@@ -35,7 +37,7 @@ export default function Home() {
         <h1 className="param1">Expense Tracker</h1>
         <div className="section1">
           <p className="param2">Your balance</p>
-          <h2 className="param3">₦ 0,000,000</h2>
+          <h2 className="param3">₦ {balance.toFixed(2)}</h2>
           <div className="displayIncome">
             <div className="income">
               <p>Income</p>

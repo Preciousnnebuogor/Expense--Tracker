@@ -224,38 +224,50 @@ body {
     width: 100%;
     margin-bottom: 15px;
   }
-  .add-transaction{
+  .add-transaction {
     width: 100%;
   }
 }
-@media (max-width: 769px) {
-.content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: white;
-  width: 100%;
-  max-width: 1200px;
-  min-height: 100vh;
-}
-.section1 {
-  margin-top: 30px;
-  text-align: center;
-  background: linear-gradient(135deg, #a8d5ba, #6b8e23);
-  border-radius: 20px;
-  padding: 70px;
-  width: 100%; /* Make it take full width of its container */
-  max-width: 700px; /* Optional: limit its max size on large screens */
-  margin-left: auto; /* Center horizontally */
-  margin-right: auto;
-  margin-top: 40px;
-}
-.section2{
-  margin-top: 30px;
-}
-.param1 {
-  /* margin-top: 20px; */
-  font-size: 50px;
-}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    background-color: #dc2626;
+    /* height: 100vh; */
+  }
+  .section1 {
+    margin-top: 30px;
+    text-align: center;
+    background: linear-gradient(135deg, #a8d5ba, #6b8e23);
+    border-radius: 20px;
+    padding: 70px;
+    width: 100%; /* Make it take full width of its container */
+    max-width: 700px; /* Optional: limit its max size on large screens */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto;
+    margin-top: 40px;
+    /* height: 100vh; */
+    background-color: #dc2626;
+  }
+  .section2 {
+    margin-top: 30px;
+    flex-direction: column;
+  }
+  .param1 {
+    /* margin-top: 20px;  */
+    font-size: 50px;
+  }
+  .transaction {
+    order: 2;
+  }
+
+  .add-transaction {
+    order: 1;
+  }
 }

@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Home() {
-  const [transaction, setTransaction] = useState([]);
+  const [transaction, setTransaction] = useState(() => {
+    const saved = localStorage.getItem("transactions");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [currentInput, setCurrentInput] = useState({
     description: "",
     amount: "",
@@ -29,6 +32,11 @@ export default function Home() {
      }
 
      const balance = income - expenses
+
+     useEffect(() => {
+       localStorage.setItem("transactions", JSON.stringify(transaction));
+     }, [transaction]);
+
 
 
   return (
